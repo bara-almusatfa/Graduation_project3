@@ -143,7 +143,7 @@ app.get('/dirsearch/setTarget', (req, res) => {
 
   
 
-    const dirsearchCommand = `dirsearch -u ${newTargetUrl} --format=json -o json`;
+    const dirsearchCommand = `dirsearch -u ${newTargetUrl} --format=json -o ~/result.json`;
 
     exec(dirsearchCommand, (error, stdout, stderr) => {
       if (error) {
@@ -175,7 +175,7 @@ app.get('/dirsearch/setTarget', (req, res) => {
 
 // Endpoint to get the raw results of the "cat json" command
 app.get('/dirsearch/getRawResults', (req, res) => {
-  const catCommand = 'cat json';
+  const catCommand = 'cat ~/result.json';
 
   exec(catCommand, (error, stdout, stderr) => {
     if (error) {
